@@ -146,10 +146,10 @@ public class FinderController extends DialogController {
     }
 
     private String msg(String key, String defaultMessage) {
-        return MessageSourceHolder.getMessageSource().getMessage(key, defaultMessage);
+        return MessageSourceHolder.getInstance().getMessageSource().getMessage(key, defaultMessage);
     }
 
     private String msg(String key, Object[] args, String defaultMessage) {
-        return MessageSourceHolder.getMessageSource().getMessage(key, args, defaultMessage);
+        return MessageSourceHolder.getInstance().getMessageSource().getMessage(key, args, defaultMessage);
     }
 }

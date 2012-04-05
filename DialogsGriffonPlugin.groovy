@@ -17,33 +17,67 @@
  */
 class DialogsGriffonPlugin {
     // the plugin version
-    def version = "0.1"
+    String version = '0.2'
     // the version or versions of Griffon the plugin is designed for
-    def griffonVersion = '0.9.4 > *' 
+    String griffonVersion = '0.9.5 > *'
     // the other plugins this plugin depends on
-    def dependsOn = [:]
+    Map dependsOn = [actions: '0.4',
+                     miglayout: '0.4',
+                     glazedlists: '0.9']
     // resources that are included in plugin packaging
-    def pluginIncludes = [actions: 0.2,
-                          miglayout: 0.3,
-                          glazedlists: '0.8.3']
+    List pluginIncludes = []
     // the plugin license
-    def license = 'GNU Lesser General Public License'
+    String license = 'GNU LGPL 2.1'
     // Toolkit compatibility. No value means compatible with all
     // Valid values are: swing, javafx, swt, pivot, gtk
-    def toolkits = ['swing']
+    List toolkits = ['swing']
     // Platform compatibility. No value means compatible with all
     // Valid values are:
     // linux, linux64, windows, windows64, macosx, macosx64, solaris
-    def platforms = []
+    List platforms = []
+    // URL where documentation can be found
+    String documentation = ''
+    // URL where source can be found
+    String source = 'https://github.com/griffon/griffon-dialogs-plugin'
 
-    def author = 'Andres Almiray'
-    def authorEmail = 'aalmiray@users.sourceforge.net'
-    def title = 'Provides common dialogs'
-    def description = '''
-Provides common dialogs:
- - TextMate inspired finder
+    List authors = [
+        [
+            name: 'Andres Almiray',
+            email: 'aalmiray@yahoo.com'
+        ]
+    ]
+    String title = 'Common dialogs'
+    String description = '''
+The goal of this plugin is to provide a set of reusable dialogs.
+
+Usage
+-----
+
+### Finder
+This dialog is inspired in the find/replace utility available in TextMate. The following snippet shows how this dialog can be activated
+
+        package sample
+ 
+        import griffon.plugins.dialogs.Finder
+ 
+        class SampleController {
+            def view
+ 
+            def find = {
+                Finder.instance.findIt(view.componentToSearch)
+            }
+        }
+
+The previous code assumes there's a View component identified by 'componentToSearch' that can be searched. By default only `JTextComponent`
+ subclasses are supported. You'll have to follow these steps should you wish to support additional components:
+
+ * Create an implementation of the `griffon.plugins.dialogs.Searcher` interface.
+ * Register the implementation with `griffon.plugins.dialogs.Finder`. This task can be achieved in two ways:
+    * Programmatically. By calling `Finder.getInstance().registerSearcher(FooComponent.class, FooComponentSearcher.class)`.
+    * Declaratively. By creating a file named `META-INF/services/griffon.plugins.dialogs.Searcher` with a line per searcher implementation
+    following this format:
+        
+            com.acme.FooComponent = com.acme.FooComponentSearcher
+
 '''
-
-    // URL to the plugin's documentation
-    def documentation = 'http://griffon.codehaus.org/Dialogs+Plugin'
 }

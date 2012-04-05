@@ -16,7 +16,7 @@
  * @author Andres Almiray
  */
 class DialogsGriffonAddon {
-    def mvcGroups = [
+    Map mvcGroups = [
         finder: [
             model     : 'griffon.plugins.dialogs.FinderModel',
             view      : 'griffon.plugins.dialogs.FinderView',

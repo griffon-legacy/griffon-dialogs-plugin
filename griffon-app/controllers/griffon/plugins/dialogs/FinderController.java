@@ -14,8 +14,6 @@
 
 package griffon.plugins.dialogs;
 
-import griffon.plugins.i18n.MessageSourceHolder;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -146,10 +144,10 @@ public class FinderController extends DialogController {
     }
 
     private String msg(String key, String defaultMessage) {
-        return MessageSourceHolder.getInstance().getMessageSource().getMessage(key, defaultMessage);
+        return getApp().getMessage(key, defaultMessage);
     }
 
     private String msg(String key, Object[] args, String defaultMessage) {
-        return MessageSourceHolder.getInstance().getMessageSource().getMessage(key, args, defaultMessage);
+        return getApp().getMessage(key, args, defaultMessage);
     }
 }

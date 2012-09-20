@@ -57,7 +57,7 @@ public class DialogController extends AbstractGriffonController {
     }
 
     public void show(final Window owner) {
-        execAsync(new Runnable() {
+        execInsideUIAsync(new Runnable() {
             public void run() {
                 boolean created = false;
                 Window window = owner;
@@ -89,7 +89,7 @@ public class DialogController extends AbstractGriffonController {
     }
 
     public void hide(ActionEvent event) {
-        execAsync(new Runnable() {
+        execInsideUIAsync(new Runnable() {
             public void run() {
                 if (dialog != null) {
                     dialog.setVisible(false);

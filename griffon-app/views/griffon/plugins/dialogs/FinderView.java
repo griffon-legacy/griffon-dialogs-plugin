@@ -26,8 +26,6 @@ import java.beans.PropertyChangeListener;
 import java.util.Map;
 
 import ca.odell.glazedlists.swing.EventComboBoxModel;
-import griffon.plugins.actions.ActionManager;
-import griffon.plugins.i18n.MessageSourceHolder;
 import net.miginfocom.swing.MigLayout;
 
 import griffon.util.RunnableWithArgs;
@@ -59,7 +57,7 @@ public class FinderView extends AbstractGriffonView {
 
     @Override
     public void mvcGroupInit(Map<String, Object> args) {
-        execSync(new Runnable() {
+        execInsideUISync(new Runnable() {
             public void run() {
                 getBuilder().setVariable("content", buildContent());
             }
@@ -75,7 +73,7 @@ public class FinderView extends AbstractGriffonView {
 
         String actionKey = "HideAction";
         panel.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("ESCAPE"), actionKey);
-        panel.getActionMap().put(actionKey, ActionManager.getInstance().actionFor(controller, "hide"));
+        panel.getActionMap().put(actionKey, actionFor("hide"));
 
         return panel;
     }
@@ -220,14 +218,14 @@ public class FinderView extends AbstractGriffonView {
     }
 
     private Action actionFor(String actionName) {
-        return ActionManager.getInstance().actionFor(controller, actionName);
+        return (Action) getApp().getActionManager().actionFor(controller, actionName).getToolkitAction();
     }
 
     private String msg(String key, String defaultMessage) {
-        return MessageSourceHolder.getInstance().getMessageSource().getMessage(key, defaultMessage);
+        return getApp().getMessage(key, defaultMessage);
     }
 
     private String msg(String key, Object[] args, String defaultMessage) {
-        return MessageSourceHolder.getInstance().getMessageSource().getMessage(key, args, defaultMessage);
+        return getApp().getMessage(key, args, defaultMessage);
     }
 }

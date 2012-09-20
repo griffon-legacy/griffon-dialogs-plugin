@@ -17,12 +17,11 @@
  */
 class DialogsGriffonPlugin {
     // the plugin version
-    String version = '0.2'
+    String version = '0.4'
     // the version or versions of Griffon the plugin is designed for
-    String griffonVersion = '0.9.5 > *'
+    String griffonVersion = '1.1.0 > *'
     // the other plugins this plugin depends on
-    Map dependsOn = [actions: '0.4',
-                     miglayout: '0.4',
+    Map dependsOn = [miglayout: '0.4',
                      glazedlists: '0.9']
     // resources that are included in plugin packaging
     List pluginIncludes = []
@@ -76,7 +75,7 @@ The previous code assumes there's a View component identified by 'componentToSea
     * Programmatically. By calling `Finder.getInstance().registerSearcher(FooComponent.class, FooComponentSearcher.class)`.
     * Declaratively. By creating a file named `META-INF/services/griffon.plugins.dialogs.Searcher` with a line per searcher implementation
     following this format:
-        
+
             com.acme.FooComponent = com.acme.FooComponentSearcher
 
 '''

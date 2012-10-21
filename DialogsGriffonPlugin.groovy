@@ -17,12 +17,12 @@
  */
 class DialogsGriffonPlugin {
     // the plugin version
-    String version = '0.4'
+    String version = '0.5'
     // the version or versions of Griffon the plugin is designed for
     String griffonVersion = '1.1.0 > *'
     // the other plugins this plugin depends on
-    Map dependsOn = [miglayout: '0.4',
-                     glazedlists: '0.9']
+    Map dependsOn = [miglayout: '1.0.0',
+                     glazedlists: '1.0.0']
     // resources that are included in plugin packaging
     List pluginIncludes = []
     // the plugin license
@@ -56,12 +56,12 @@ Usage
 This dialog is inspired in the find/replace utility available in TextMate. The following snippet shows how this dialog can be activated
 
         package sample
- 
+
         import griffon.plugins.dialogs.Finder
- 
+
         class SampleController {
             def view
- 
+
             def find = {
                 Finder.instance.findIt(view.componentToSearch)
             }

@@ -17,12 +17,12 @@
  */
 class DialogsGriffonPlugin {
     // the plugin version
-    String version = '0.5'
+    String version = '0.6.0'
     // the version or versions of Griffon the plugin is designed for
-    String griffonVersion = '1.1.0 > *'
+    String griffonVersion = '1.3.0 > *'
     // the other plugins this plugin depends on
     Map dependsOn = [miglayout: '1.0.0',
-                     glazedlists: '1.0.0']
+                     glazedlists: '2.0.0']
     // resources that are included in plugin packaging
     List pluginIncludes = []
     // the plugin license
@@ -53,7 +53,8 @@ Usage
 -----
 
 ### Finder
-This dialog is inspired in the find/replace utility available in TextMate. The following snippet shows how this dialog can be activated
+This dialog is inspired in the find/replace utility available in TextMate. The
+following snippet shows how this dialog can be activated
 
         package sample
 
@@ -67,8 +68,9 @@ This dialog is inspired in the find/replace utility available in TextMate. The f
             }
         }
 
-The previous code assumes there's a View component identified by 'componentToSearch' that can be searched. By default only `JTextComponent`
- subclasses are supported. You'll have to follow these steps should you wish to support additional components:
+The previous code assumes there's a View component identified by 'componentToSearch'
+that can be searched. By default only `JTextComponent` subclasses are supported.
+You'll have to follow these steps should you wish to support additional components:
 
  * Create an implementation of the `griffon.plugins.dialogs.Searcher` interface.
  * Register the implementation with `griffon.plugins.dialogs.Finder`. This task can be achieved in two ways:
